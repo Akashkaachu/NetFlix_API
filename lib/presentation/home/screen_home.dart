@@ -19,7 +19,7 @@ class ScreenHome extends StatelessWidget {
         return NotificationListener<UserScrollNotification>(
           onNotification: (notification) {
             final ScrollDirection direction = notification.direction;
-            print(direction);
+
             if (direction == ScrollDirection.reverse) {
               scrollNotifier.value = false;
             } else if (direction == ScrollDirection.forward) {
@@ -49,7 +49,7 @@ class ScreenHome extends StatelessWidget {
               ),
               scrollNotifier.value == true
                   ? AnimatedContainer(
-                      duration: Duration(milliseconds: 1000),
+                      duration: const Duration(milliseconds: 1000),
                       width: double.infinity,
                       height: 91,
                       color: Colors.black.withOpacity(0.3),
@@ -57,11 +57,11 @@ class ScreenHome extends StatelessWidget {
                         Row(
                           children: [
                             Image.network(
-                              "https://seeklogo.com/images/N/netflix-n-logo-0F1ED3EBEB-seeklogo.com.png",
+                              "https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/227_Netflix_logo-512.png",
                               width: 70,
                               height: 70,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             const Icon(
                               Icons.cast,
                               size: 30,

@@ -23,10 +23,11 @@ class NumberCard extends StatelessWidget {
                   height: 200,
                   decoration: BoxDecoration(
                       borderRadius: borderRadius10,
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           fit: BoxFit.cover,
                           image: NetworkImage(
-                              "https://image.tmdb.org/t/p/w1280/qhb1qOilapbapxWQn9jtRCMwXJF.jpg"))),
+                            "https://image.tmdb.org/t/p/w1280/kvJvGxsDLi3MmHzc9nregyJtOWY.jpg",
+                          ))),
                 ),
               ),
             ),
