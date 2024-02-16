@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:netflix16/core/colors/colors.dart';
-import 'package:netflix16/core/colors/constant.dart';
+import 'package:netflix/core/color/colors.dart';
 
 class VideoWidget extends StatelessWidget {
   const VideoWidget({
     super.key,
+    required this.url,
   });
-
+  final String url;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -17,7 +17,7 @@ class VideoWidget extends StatelessWidget {
           width: size.width,
           height: 200,
           child: Image.network(
-            newAndHotTempImage,
+            url,
             fit: BoxFit.cover,
           ),
         ),
@@ -31,7 +31,7 @@ class VideoWidget extends StatelessWidget {
               onPressed: () {},
               icon: const Icon(
                 Icons.volume_off,
-                color: whitecolor,
+                color: colorWhite,
                 size: 20,
               ),
             ),

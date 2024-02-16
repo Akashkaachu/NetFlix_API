@@ -43,5 +43,5 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-#ignore files (apikey)
-lib\infrastructure\api_keys.dart
+#ignore file (apiKey)
+lib\infrastrcture\api_key.dart

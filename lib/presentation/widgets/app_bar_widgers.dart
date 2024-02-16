@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix16/core/colors/constant.dart';
+import 'package:netflix/core/costant.dart';
 
 class AppBarWidget extends StatelessWidget {
   const AppBarWidget({super.key, required this.tittle});
@@ -19,10 +19,11 @@ class AppBarWidget extends StatelessWidget {
           color: Colors.white,
         ),
         kWidth,
-        Container(
-          color: Colors.blue,
+        SizedBox(
           width: 30,
           height: 30,
+          child: Image.asset(
+              "assets/images/WhatsApp Image 2024-02-15 at 19.11.35_3dd54aa7.jpg"),
         ),
         kWidth
       ],

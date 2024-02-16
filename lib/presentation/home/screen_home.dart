@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:netflix16/core/colors/constant.dart';
-import 'package:netflix16/presentation/home/widget/background_card.dart';
-import 'package:netflix16/presentation/home/widget/number_title_card.dart';
-import 'package:netflix16/presentation/main_page/main_Title_Card.dart';
+import 'package:netflix/core/costant.dart';
+import 'package:netflix/presentation/home/widget/background_card.dart';
+import 'package:netflix/presentation/home/widget/number_title_card.dart';
+import 'package:netflix/presentation/main_page/main_Title_Card.dart';
 
 ValueNotifier<bool> scrollNotifier = ValueNotifier(true);
 
@@ -68,10 +68,12 @@ class ScreenHome extends StatelessWidget {
                               color: Colors.white,
                             ),
                             kWidth,
-                            Container(
-                              color: Colors.blue,
-                              width: 30,
-                              height: 30,
+                            SizedBox(
+                              width: 25,
+                              height: 25,
+                              child: Image.asset(
+                                  "assets/images/WhatsApp Image 2024-02-15 at 19.11.35_3dd54aa7.jpg",
+                                  fit: BoxFit.cover),
                             ),
                             kWidth
                           ],

@@ -1,6 +1,9 @@
-import 'package:netflix16/core/colors/strings.dart';
-import 'package:netflix16/infrastructure/api_keys.dart';
+import 'package:netflix/core/string.dart';
+import 'package:netflix/infrastrcture/api_key.dart';
 
 class ApiEndPoints {
-  static const downloads = "$KBaseUrl/ trending/all/week?api_key=$apiKey";
+  static const downloads = '$kBaseUrl/trending/all/day?api_key=$apikey';
+  static const search = "$kBaseUrl/search/movie?api_key=$apikey";
+  static const hotAndNewMovie = '$kBaseUrl/discover/movie?api_key=$apikey';
+  static const hotAndNewTv = '$kBaseUrl/discover/tv?api_key=$apikey';
 }

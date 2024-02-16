@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:netflix16/core/colors/colors.dart';
-import 'package:netflix16/core/colors/constant.dart';
-import 'package:netflix16/presentation/home/widget/custom_button_widget.dart';
+import 'package:netflix/core/color/colors.dart';
+import 'package:netflix/core/costant.dart';
+import 'package:netflix/presentation/home/widget/custom_button_widget.dart';
 
 class BackGroundCard extends StatelessWidget {
   const BackGroundCard({super.key});
@@ -49,10 +49,10 @@ class BackGroundCard extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: Text(
           "Play",
-          style: TextStyle(fontSize: 20, color: kBlackColor),
+          style: TextStyle(fontSize: 20, color: colorBlack),
         ),
       ),
-      style: TextButton.styleFrom(backgroundColor: whitecolor),
+      style: TextButton.styleFrom(backgroundColor: colorWhite),
     );
   }
 }

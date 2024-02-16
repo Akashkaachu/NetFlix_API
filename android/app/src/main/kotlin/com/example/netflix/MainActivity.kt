@@ -1,4 +1,4 @@
-package com.example.netflix16
+package com.example.netflix
 
 import io.flutter.embedding.android.FlutterActivity
 

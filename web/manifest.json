@@ -1,6 +1,6 @@
 {
-    "name": "netflix16",
-    "short_name": "netflix16",
+    "name": "netflix",
+    "short_name": "netflix",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

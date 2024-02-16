@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:netflix16/core/colors/constant.dart';
+import 'package:netflix/core/costant.dart';
 
 class MainCardWidget extends StatelessWidget {
   const MainCardWidget({

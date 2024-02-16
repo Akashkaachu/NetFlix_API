@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:netflix16/core/colors/constant.dart';
-import 'package:netflix16/presentation/downloads/widgets/main_tittle.dart';
-import 'package:netflix16/presentation/home/widget/number_cards.dart';
+import 'package:netflix/core/costant.dart';
+import 'package:netflix/presentation/downloads/widgets/main_title.dart';
+import 'package:netflix/presentation/home/widget/number_cards.dart';
 
 class NumberTitleCard extends StatelessWidget {
   const NumberTitleCard({

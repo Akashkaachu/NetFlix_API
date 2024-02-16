@@ -1,13 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:netflix16/core/colors/colors.dart';
-import 'package:netflix16/core/colors/constant.dart';
-import 'package:netflix16/presentation/home/widget/custom_button_widget.dart';
-import 'package:netflix16/presentation/widgets/video_widget.dart';
+import 'package:netflix/core/costant.dart';
+import 'package:netflix/presentation/home/widget/custom_button_widget.dart';
+import 'package:netflix/presentation/widgets/video_widget.dart';
 
 class ComingSoonWidget extends StatelessWidget {
+  final String id;
+  final String month;
+  final String day;
+  final String posterPath;
+  final String movieName;
+  final String discription;
   const ComingSoonWidget({
     super.key,
+    required this.id,
+    required this.month,
+    required this.day,
+    required this.posterPath,
+    required this.movieName,
+    required this.discription,
   });
 
   @override
@@ -18,69 +29,72 @@ class ComingSoonWidget extends StatelessWidget {
       children: [
         SizedBox(
             width: 50,
-            child: Column(
-              children: [
-                Text(
-                  "Feb".toUpperCase(),
-                  style: const TextStyle(
-                    fontSize: 20,
-                  ),
+            child: Column(children: [
+              Text(
+                month.toUpperCase(),
+                style: const TextStyle(
+                  fontSize: 20,
                 ),
-                const Text(
-                  "11",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                )
-              ],
-            )),
+              ),
+              Text(
+                day,
+                style:
+                    const TextStyle(fontSize: 39, fontWeight: FontWeight.bold),
+              )
+            ])),
         SizedBox(
           width: size.width - 50,
-          height: 430,
-          child: const Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+
+          // height: 430,
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            VideoWidget(url: posterPath),
+            Row(
+              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                VideoWidget(),
-                Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                SizedBox(
+                  width: size.width / 2,
+                  child: Text(
+                    movieName,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                        fontSize: 40,
+                        letterSpacing: -3,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const Spacer(),
+                const Row(
                   children: [
-                    Text(
-                      "TALLGIRL",
-                      style: TextStyle(
-                          fontSize: 40,
-                          letterSpacing: -3,
-                          fontWeight: FontWeight.bold),
+                    CustomButtonWidget(
+                      icon: CupertinoIcons.bell,
+                      text: "Remind Me",
+                      iconSize: 20,
+                      textSize: 12,
                     ),
-                    Spacer(),
-                    Row(
-                      children: [
-                        CustomButtonWidget(
-                          icon: CupertinoIcons.bell,
-                          text: "Remind Me",
-                          iconSize: 20,
-                          textSize: 12,
-                        ),
-                        kWidth,
-                        CustomButtonWidget(
-                          icon: CupertinoIcons.info,
-                          text: "info",
-                          iconSize: 20,
-                          textSize: 12,
-                        ),
-                        kWidth
-                      ],
-                    )
+                    kWidth,
+                    CustomButtonWidget(
+                      icon: CupertinoIcons.info,
+                      text: "info",
+                      iconSize: 20,
+                      textSize: 12,
+                    ),
+                    kWidth
                   ],
-                ),
-                const Text("Coming on Friday"),
-                kHeight15,
-                const Text(
-                  "Tall Girl2",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                kHeight,
-                const Text(
-                    "Landing the lead in the school musical is a dream come true for Hodi, until the pressure sends her confidence -- and her relationship -- into a tailspin.",
-                    style: TextStyle(color: Colors.grey))
-              ]),
+                )
+              ],
+            ),
+            Text("Coming $day,$month"),
+            kHeight15,
+            Text(
+              movieName,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            kHeight,
+            Text(discription,
+                textAlign: TextAlign.justify,
+                style: const TextStyle(color: Colors.grey))
+          ]),
         ),
       ],
     );

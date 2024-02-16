@@ -1,8 +1,8 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:netflix16/core/colors/colors.dart';
-import 'package:netflix16/core/colors/constant.dart';
+import 'package:netflix/core/color/colors.dart';
+import 'package:netflix/core/costant.dart';
 
 class NumberCard extends StatelessWidget {
   const NumberCard({super.key, required this.index});
@@ -37,7 +37,7 @@ class NumberCard extends StatelessWidget {
           bottom: -25,
           left: -10,
           child: BorderedText(
-            strokeColor: whitecolor,
+            strokeColor: colorWhite,
             strokeWidth: 4.0,
             child: Text(
               "${index + 1}",

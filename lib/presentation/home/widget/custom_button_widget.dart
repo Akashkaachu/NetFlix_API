@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:netflix16/core/colors/colors.dart';
+import 'package:netflix/core/color/colors.dart';
 
 class CustomButtonWidget extends StatelessWidget {
   const CustomButtonWidget({
@@ -19,7 +19,7 @@ class CustomButtonWidget extends StatelessWidget {
     return Column(children: [
       Icon(
         icon,
-        color: whitecolor,
+        color: colorWhite,
         size: iconSize,
       ),
       Text(
