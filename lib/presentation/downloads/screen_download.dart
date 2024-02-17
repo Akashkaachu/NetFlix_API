@@ -29,7 +29,7 @@ class ScreenDownloads extends StatelessWidget {
                 return state.isloading
                     ? const Column(
                         children: [
-                          Center(child: const CircularProgressIndicator()),
+                          Center(child: CircularProgressIndicator()),
                         ],
                       )
                     : Section2(

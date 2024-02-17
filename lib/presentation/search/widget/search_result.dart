@@ -41,14 +41,16 @@ class SearchResult extends StatelessWidget {
 
 class MainCard extends StatelessWidget {
   const MainCard({super.key, required this.imageUrl});
-  final String imageUrl;
+  final String? imageUrl;
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(7),
-          image: DecorationImage(
-              fit: BoxFit.cover, image: NetworkImage(imageUrl[0]))),
+          image: imageUrl == null
+              ? null
+              : DecorationImage(
+                  fit: BoxFit.cover, image: NetworkImage(imageUrl![0]))),
     );
   }
 }

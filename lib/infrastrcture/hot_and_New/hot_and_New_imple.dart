@@ -7,7 +7,7 @@ import 'package:netflix/domain/core/api_end_points.dart';
 import 'package:netflix/domain/core/failures/main_failure.dart';
 import 'package:netflix/domain/newAndHot/hot_and_new_service.dart';
 import 'package:netflix/domain/newAndHot/models/discover_response.dart';
-import 'package:netflix/domain/search/model/search_resoponse/search_resoponse.dart';
+
 
 @LazySingleton(as: HotAndNewService)
 class HotAndNewImplementation implements HotAndNewService {

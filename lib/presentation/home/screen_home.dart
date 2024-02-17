@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix/application/home/home_bloc.dart';
+import 'package:netflix/application/hot_and_new/hot_and_new_bloc.dart';
 import 'package:netflix/core/costant.dart';
 import 'package:netflix/presentation/home/widget/background_card.dart';
 import 'package:netflix/presentation/home/widget/number_title_card.dart';
 import 'package:netflix/presentation/main_page/main_Title_Card.dart';
+import 'package:netflix/presentation/main_page/widgets/main_card.dart';
+import 'package:netflix/presentation/search/widget/search_result.dart';
 
 ValueNotifier<bool> scrollNotifier = ValueNotifier(true);
 
@@ -12,6 +17,12 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<HomeBloc>(context).add(const TopTenRated());
+    BlocProvider.of<HomeBloc>(context).add(const ReleasedYear());
+    BlocProvider.of<HomeBloc>(context).add(const Trending());
+    BlocProvider.of<HotAndNewBloc>(context).add(const LoadDataInComingSoon());
+    BlocProvider.of<HotAndNewBloc>(context)
+        .add(const LoadDataInEveryOneIsWatching());
     return Scaffold(
         body: ValueListenableBuilder(
       valueListenable: scrollNotifier,
@@ -30,21 +41,132 @@ class ScreenHome extends StatelessWidget {
           child: Stack(
             children: [
               ListView(
-                children: const [
-                  BackGroundCard(),
-                  MainTitleCards(title: "Realased in the past year"),
+                children: [
+                  BlocBuilder<HotAndNewBloc, HotAndNewState>(
+                    builder: (context, state) {
+                      if (state.isLoading) {
+                        return const Center(
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                          ),
+                        );
+                      } else if (state.hasError) {
+                        return const Center(
+                          child: Text("Error while loading coming soon list"),
+                        );
+                      } else if (state.comingSoonList.isEmpty) {
+                        return const Center(
+                          child: Text("list is empty"),
+                        );
+                      } else {
+                        return BackGroundCard(
+                            urlImage: state.comingSoonList[6].posterPath ??
+                                'default_url_image');
+                      }
+                    },
+                  ),
+                  BlocBuilder<HomeBloc, HomeState>(
+                    builder: (context, state) {
+                      if (state.isLoading) {
+                        return MainTitleCards(
+                            list: state.topTenRated,
+                            title: "Realased in the past year");
+                      } else if (state.hasError) {
+                        return const Center(
+                          child: Text("Error while loading coming soon list"),
+                        );
+                      } else if (state.topTenRated.isEmpty) {
+                        return const Center(
+                          child: Text("list is empty"),
+                        );
+                      } else {
+                        return MainTitleCards(
+                            list: state.topTenRated,
+                            title: "Realased in the past year");
+                      }
+                    },
+                  ),
                   kHeight,
-                  MainTitleCards(title: "Trending Now"),
+                  BlocBuilder<HomeBloc, HomeState>(
+                    builder: (context, state) {
+                      if (state.isLoading) {
+                        return const MainTitleCards(
+                          title: "Trending Now",
+                          isloading: true,
+                        );
+                      } else if (state.hasError) {
+                        return const Center(
+                          child: Text("Error while loading coming soon list"),
+                        );
+                      } else if (state.topTenRated.isEmpty) {
+                        return const Center(
+                          child: Text("list is empty"),
+                        );
+                      } else {
+                        return MainTitleCards(
+                            list: state.releasedYear, title: "Trending Now");
+                      }
+                    },
+                  ),
                   kHeight,
 
                   //---------------------------------------------------------//
 
-                  NumberTitleCard(),
+                  BlocBuilder<HomeBloc, HomeState>(
+                    builder: (context, state) {
+                      if (state.isLoading) {
+                        return const MainCardWidget(
+                          imageUrl: null,
+                        );
+                      } else if (state.hasError) {
+                        return const Center(
+                          child: Text("Error while loading coming soon list"),
+                        );
+                      } else if (state.topTenRated.isEmpty) {
+                        return const Center(
+                          child: Text("list is empty"),
+                        );
+                      } else {
+                        return NumberTitleCard(
+                          list: state.topTenRated,
+                        );
+                      }
+                    },
+                  ),
                   kHeight,
+
                   //--------------------------------------------------------------//
-                  MainTitleCards(title: "Tense Dramas "),
+
+                  BlocBuilder<HotAndNewBloc, HotAndNewState>(
+                    builder: (context, state) {
+                      if (state.isLoading) {
+                        return const Center(
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                          ),
+                        );
+                      } else if (state.hasError) {
+                        return const Center(
+                          child: Text("Error while loading coming soon list"),
+                        );
+                      } else if (state.comingSoonList.isEmpty) {
+                        return const Center(
+                          child: Text("list is empty"),
+                        );
+                      } else {
+                        return MainTitleCards(
+                            list: state.comingSoonList, title: "Tense Dramas ");
+                      }
+                    },
+                  ),
                   kHeight,
-                  MainTitleCards(title: "South Indian Cinemas"),
+                  BlocBuilder<HotAndNewBloc, HotAndNewState>(
+                    builder: (context, state) {
+                      return MainTitleCards(
+                          list: state.everyOneIsWatchingList,
+                          title: "South Indian Cinemas");
+                    },
+                  ),
                 ],
               ),
               scrollNotifier.value == true

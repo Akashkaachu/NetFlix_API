@@ -4,8 +4,9 @@ import 'package:netflix/core/costant.dart';
 class MainCardWidget extends StatelessWidget {
   const MainCardWidget({
     super.key,
+    required this.imageUrl,
   });
-
+  final String? imageUrl;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,10 +16,11 @@ class MainCardWidget extends StatelessWidget {
         height: 250,
         decoration: BoxDecoration(
             borderRadius: borderRadius10,
-            image: DecorationImage(
-                fit: BoxFit.cover,
-                image: NetworkImage(
-                    "https://image.tmdb.org/t/p/w1280/qhb1qOilapbapxWQn9jtRCMwXJF.jpg"))),
+            image: imageUrl == null
+                ? null
+                : DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage("$imageAppendUrl$imageUrl"))),
       ),
     );
   }

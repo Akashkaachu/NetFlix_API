@@ -4,8 +4,8 @@ import 'package:netflix/core/costant.dart';
 import 'package:netflix/presentation/home/widget/custom_button_widget.dart';
 
 class BackGroundCard extends StatelessWidget {
-  const BackGroundCard({super.key});
-
+  const BackGroundCard({super.key, required this.urlImage});
+  final String urlImage;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -16,7 +16,8 @@ class BackGroundCard extends StatelessWidget {
           decoration: BoxDecoration(
               color: Colors.green,
               image: DecorationImage(
-                  fit: BoxFit.cover, image: NetworkImage(constImageUrl[0]))),
+                  fit: BoxFit.cover,
+                  image: NetworkImage('$imageAppendUrl$urlImage'))),
         ),
         Positioned(
           bottom: 0,
